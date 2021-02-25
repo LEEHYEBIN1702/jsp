@@ -16,19 +16,29 @@ $("#btnEmail").on("click", function(){
 		var param= "email=" + $("[name=email]").val()
 	$.ajax({
 		url : "../EmailCheck",
-		data: param,
-		success : function(response) { $("#emailResult").html(response); 
-		}	
-	   })
+		data: param,                     //서버에 보낼 파라미터
+		dataType : "xml",               // 결과 타입
+		success : function(response) { 
+			//span 태그에 출력
+			/*
+			if (response.email == "true") {
+			$("#emailResult").html("<font color='blue'>사용 가능</font>"); 
+			}else {
+			$("#emailResult").html("<font color='blue'>사용 불가능</font>"); 	
+			}*/
+			//xml
+			$("#emailResult").html($(response).find("email").text());
+		  } 	
+	  })
    });	
 });
 </script>
 </head>
 <body>
 <h3 id="top">사원등록</h3>
-<c:set var="url" value="../EmpInsert"/>
-<c:if test="${not empty empVO.employee_id} }">
-<c:set var="url" value="../EmpUpdate"/>
+<c:set var="url" value="./EmpInsert"/>
+<c:if test="${not empty empVO.employee_id}">
+<c:set var="url" value="EmpUpdate"/>
 </c:if>
 <form action="../EmpInsert" method="post" name="frm">
 	employee_id <input type="number" name="employee_id" 

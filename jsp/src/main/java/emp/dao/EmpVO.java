@@ -2,9 +2,15 @@ package emp.dao;
 
 import java.sql.Date;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data; // 앞으로 이것만 추가하면 get set tostring 추가 안 해도 된다.
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class EmpVO {
 	private String employee_id;
 	private String first_name;
