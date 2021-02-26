@@ -147,12 +147,13 @@ public class EmpDAO {
 		//1. connect (연결)
 		conn = JdbcUtil.connect();
 		//2. statement (구문)
-		String sql = "insert EMPLOYEE_ID,"
-			             + " LAST_NAME,"
-				         + " EMAIL,"
-				         + " HIRE_DATE,"
-			             + " JOB_ID " //문자열 연결 할 땐 앞, 뒤 무조건 공백 주기
-				         + " values (?, ?, ?, ?, ?)";
+		 String sql = "INSERT INTO EMPLOYEES "
+         		 + "(EMPLOYEE_ID, " 
+         		 + " LAST_NAME, " 
+        		 + " EMAIL, " 
+         		 + " HIRE_DATE, "
+                 + " JOB_ID "
+                 + " VALUES(?,?,?,?,?)";
 		PreparedStatement pstmt = conn.prepareStatement(sql);	
 		//3. execute (실행)
 		pstmt.setString(1, vo.getEmployee_id());
